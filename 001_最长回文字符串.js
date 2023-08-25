@@ -30,7 +30,6 @@ var longestPalindrome = function (s) {
         //当前回文子串比之前的大，更新最大长度
         res = s.substring(i, j + 1);
       }
-      console.log(dp);
     }
   }
   return res;
