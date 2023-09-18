@@ -15,7 +15,6 @@ class LinkList {
       cur.next = new Node(arr[i]);
       cur = cur.next;
     }
-    console.log(this.head);
   }
 
   showLink() {
@@ -31,7 +30,6 @@ class LinkList {
   }
 }
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-const list = new LinkList(arr);
-console.log(list.head);
-list.showLink();
+module.exports = {
+  LinkList,
+};
