@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/linked-list-cycle-ii/submissions/
+// https://leetcode.cn/problems/linked-list-cycle-ii/
 
 // 快慢指针解法
 // 首先先判断这个链表存不存在环
