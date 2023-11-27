@@ -9,7 +9,8 @@ const arr = [3, 4, 5, 1, 2];
 const test = (arr) => {
   let high = arr.length - 1;
   let low = 0;
-
+// 9 0 4
+// 
   while (low < high) {
     let cur = Math.floor((high - low) / 2) + low;
     if (arr[cur] < arr[high]) {
