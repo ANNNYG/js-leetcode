@@ -23,7 +23,6 @@ const fn = (prices) => {
   dp[1] = -prices[0]
 
   while (index < len) {
-    console.log(dp[0], dp[1] + prices[index], dp[1], -prices[index])
     dp[0] = Math.max(dp[0], dp[1] + prices[index]) // 今天不持有
     dp[1] = Math.max(dp[1], -prices[index]) // 今天持有
     index++
