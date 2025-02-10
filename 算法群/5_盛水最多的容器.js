@@ -4,6 +4,8 @@ const height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
 // const height = [1, 1]
 // const height = [8, 7, 2, 1]
 
+// 双指针，记录好最大值，能装多少水取决于最短边，最短边往里收缩，遍历过程中取最大值
+
 var maxArea = function (height) {
   let maxHeight = 0
 

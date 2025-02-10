@@ -2,6 +2,7 @@
 // 给定一个整数数组 nums，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。
 
 const nums = [1, 2, 3, 4, 5, 6, 7], k = 3;
+// 输出[5,6,7,1,2,3,4]
 
 // 超出时间限制
 const fn = (nums, k) => {
@@ -14,7 +15,7 @@ const fn = (nums, k) => {
   return nums
 }
 
-const fn2 = () => {
+const fn2 = (nums, k) => {
   const n = nums.length;
   const newArr = new Array(n);
   for (let i = 0; i < n; ++i) {
@@ -23,6 +24,7 @@ const fn2 = () => {
   for (let i = 0; i < n; ++i) {
     nums[i] = newArr[i];
   }
+  return nums
 }
 
-console.log(fn(nums, k))
+console.log(fn2(nums, k))

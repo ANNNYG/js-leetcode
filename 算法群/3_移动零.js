@@ -2,6 +2,8 @@
 
 // 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 
+// 思路：滚雪球，每发现一个0，将雪球大小+1
+
 const nums = [0, 1, 0, 3, 12]
 
 // 滚雪球解法
@@ -18,6 +20,8 @@ const moveZeroes = function (nums) {
   }
   return nums
 };
+
+// 
 
 // 快慢指针解法
 const moveZeroes2 = (nums) => {

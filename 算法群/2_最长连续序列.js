@@ -1,6 +1,8 @@
 // https://leetcode.cn/problems/longest-consecutive-sequence/description/
 
 
+// 思路：创建一个set，每次遍历后将值+1，看是否存在于set里，存在的话记录下这个长度
+
 const nums = [100, 4, 200, 1, 3, 2]
 
 var longestConsecutive = function (nums) {
