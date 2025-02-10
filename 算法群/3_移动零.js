@@ -15,7 +15,6 @@ const moveZeroes = function (nums) {
       nums[i] = 0
       nums[i - snowSize] = t
     }
-    console.log(nums)
   }
   return nums
 };
