@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const PENDING = "pending";
+      const FULFILLED = "fulfilled";
+      const REJECTED = "rejected";
+
+      class MyPromise {
+        status = PENDING;
+        value = undefined;
+        reason = undefined;
+        onResolveFns = [];
+        onRejectFns = [];
+
+        constructor(executor) {
+          const resolve = (value) => {
+            queueMicrotask(() => {
+              if (this.status === PENDING) {
+                this.status = FULFILLED;
+                this.value = value;
+                this.onResolveFns.forEach((fn) => {
+                  fn();
+                });
+              }
+            });
+          };
+
+          const reject = (reason) => {
+            queueMicrotask(() => {
+              if (this.status === PENDING) {
+                this.status = REJECTED;
+                this.reason = reason;
+                this.onRejectFns.forEach((fn) => {
+                  fn();
+                });
+              }
+            });
+          };
+
+          executor(resolve, reject);
+        }
+
+        then(onResolve, onReject) {
+          return new MyPromise((resolve, reject) => {
+            if (this.status === FULFILLED) {
+              const value = onResolve();
+              resolve(value);
+            }
+            if (this.status === REJECTED) {
+              const reason = onReject();
+              reject(reason);
+            }
+
+            if (this.status === PENDING) {
+              this.onResolveFns.push(() => {
+                const value = onResolve(this.value);
+                resolve(value);
+              });
+              this.onRejectFns.push(() => {
+                const reason = onReject(this.reason);
+                reject(reason);
+              });
+            }
+          });
+        }
+      }
+
+      const p = new MyPromise((resolve, reject) => {
+        resolve("111");
+      });
+
+      p.then((res) => {
+        console.log("p:res: ", res);
+        return 22;
+      })
+        .then((res) => {
+          console.log("p: res1: ", res);
+        })
+        .then((res) => {
+          console.log("p: res2: ", res);
+        });
+    </script>
+  </body>
+</html>
