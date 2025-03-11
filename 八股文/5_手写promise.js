@@ -97,6 +97,11 @@ const p2 = new MyPromise((resolve, reject) => {
 })
 const p3 = new MyPromise((resolve, reject) => {
   resolve('p3')
+}).then(res => {
+  console.log(res)
+  return 'p3 1111'
+}).then(res => {
+  console.log(res)
 })
 
 // const result = MyPromise.all([p1, p2, p3]).then(res => {
